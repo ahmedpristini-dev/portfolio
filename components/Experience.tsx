@@ -1,8 +1,11 @@
 'use client'
 
 import { GraduationCap, Briefcase } from 'lucide-react'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 const Experience = () => {
+  const { ref, isVisible } = useScrollReveal()
+
   const entries = [
     {
       type: 'education',
@@ -49,7 +52,11 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="section">
+    <section 
+      ref={ref}
+      id="experience" 
+      className={`section transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
       <div className="container-max">
         <div className="space-y-12">
           <h2 className="text-4xl sm:text-5xl font-bold text-text">Experience</h2>
