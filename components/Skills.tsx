@@ -1,8 +1,11 @@
 'use client'
 
 import { Briefcase, Code, Award, Globe } from 'lucide-react'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 const Skills = () => {
+  const { ref, isVisible } = useScrollReveal()
+
   const skillGroups = [
     {
       icon: Briefcase,
@@ -27,7 +30,11 @@ const Skills = () => {
   ]
 
   return (
-    <section id="skills" className="section">
+    <section 
+      ref={ref}
+      id="skills" 
+      className={`section transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
       <div className="container-max">
         <div className="space-y-12">
           <h2 className="text-4xl sm:text-5xl font-bold text-text">Skills & Certifications</h2>
