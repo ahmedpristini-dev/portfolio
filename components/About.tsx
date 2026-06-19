@@ -1,10 +1,17 @@
 'use client'
 
 import { Globe } from 'lucide-react'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 const About = () => {
+  const { ref, isVisible } = useScrollReveal()
+
   return (
-    <section id="about" className="section">
+    <section 
+      ref={ref}
+      id="about" 
+      className={`section transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
       <div className="container-max">
         <div className="space-y-12">
           <h2 className="text-4xl sm:text-5xl font-bold text-text">About</h2>
