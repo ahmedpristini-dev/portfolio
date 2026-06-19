@@ -1,8 +1,11 @@
 'use client'
 
 import { Mail, Phone, Linkedin } from 'lucide-react'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 const Contact = () => {
+  const { ref, isVisible } = useScrollReveal()
+
   const contactMethods = [
     {
       icon: Mail,
@@ -25,7 +28,11 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="section">
+    <section 
+      ref={ref}
+      id="contact" 
+      className={`section transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
       <div className="container-max">
         <div className="space-y-12">
           <h2 className="text-4xl sm:text-5xl font-bold text-text">Contact</h2>
