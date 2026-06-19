@@ -1,8 +1,11 @@
 'use client'
 
 import { Bot, Mic, Palette, Trophy } from 'lucide-react'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 const Projects = () => {
+  const { ref, isVisible } = useScrollReveal()
+
   const projects = [
     {
       icon: Bot,
@@ -27,7 +30,11 @@ const Projects = () => {
   ]
 
   return (
-    <section id="projects" className="section">
+    <section 
+      ref={ref}
+      id="projects" 
+      className={`section transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
       <div className="container-max">
         <div className="space-y-12">
           <h2 className="text-4xl sm:text-5xl font-bold text-text">Projects</h2>
